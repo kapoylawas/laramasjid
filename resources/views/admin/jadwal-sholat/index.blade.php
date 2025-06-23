@@ -1,6 +1,6 @@
 @extends('layouts.backend.app', [
-    'title' => 'Manage Users',
-    'contentTitle' => 'Manage Users',
+    'title' => 'Jadwal Sholat',
+    'contentTitle' => 'Jadwal Sholat',
 ])
 @push('css')
     <!-- DataTables -->
@@ -13,7 +13,7 @@
         <div class="col">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('admin.users.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
+                    <a href="{{ route('admin.jadwal-sholat.create') }}" class="btn btn-primary btn-sm">Tambah Data</a>
                 </div>
                 <div class="card-body table-responsive">
                     <table id="dataTable1" class="table table-bordered table-hover">
@@ -21,7 +21,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Name</th>
-                                <th>Email</th>
+                                <th>Jadwal Sholat</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -30,16 +30,16 @@
                                 $no = 1;
                             @endphp
 
-                            @foreach ($users as $user)
+                            @foreach ($jadwalSholat as $js)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $js->name }}</td>
+                                    <td>{{ $js->waktu }}</td>
                                     <td>
                                         <div class="row ml-2">
-                                            <a href="{{ route('admin.users.edit', $user->id) }}"
+                                            <a href="{{ route('admin.jadwal-sholat.edit', $js->id) }}"
                                                 class="btn btn-primary btn-sm"><i class="fas fa-edit fa-fw"></i></a>
-                                            <form method="POST" action="{{ route('admin.users.destroy', $user->id) }}">
+                                            <form method="POST" action="{{ route('admin.users.destroy', $js->id) }}">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button onclick="return confirm('Yakin hapus ?')" type="submit"

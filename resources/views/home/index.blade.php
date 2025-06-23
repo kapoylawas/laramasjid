@@ -192,21 +192,22 @@
                                 <table class="table table-hover mb-0">
                                     <thead class="bg-primary text-white">
                                         <tr>
-                                            <th class="text-center py-3">Subuh</th>
-                                            <th class="text-center py-3">Dzuhur</th>
-                                            <th class="text-center py-3">Ashar</th>
-                                            <th class="text-center py-3">Maghrib</th>
-                                            <th class="text-center py-3">Isya</th>
+                                            <th>No</th>
+                                            <th>Name</th>
+                                            <th>Jadwal Sholat</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="text-center py-4">04:30</td>
-                                            <td class="text-center py-4">12:15</td>
-                                            <td class="text-center py-4">15:30</td>
-                                            <td class="text-center py-4">18:15</td>
-                                            <td class="text-center py-4">19:30</td>
-                                        </tr>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($jadwalSholats as $js)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $js->name }}</td>
+                                                <td>{{ $js->waktu }}</td>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
