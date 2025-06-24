@@ -22,16 +22,16 @@ class OrganisasiController extends Controller
 
     public function store(Request $request)
     {
-      $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'jabatan' => 'required|string|max:255',
-        'hp' => 'required|string|max:20',
-    ]);
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'jabatan' => 'required|string|max:255',
+            'hp' => 'required|string|max:20',
+        ]);
 
-    // Upload gambar
-    if ($request->hasFile('image')) {
-        $imagePath = $request->file('image')->store('organisasi', 'public');
-    }
+        // Upload gambar
+        if ($request->hasFile('image')) {
+            $imagePath = $request->file('image')->store('organisasi', 'public');
+        }
 
         Organisasi::create([
             'image' => $imagePath ?? null, // Simpan path gambar
@@ -40,11 +40,17 @@ class OrganisasiController extends Controller
             'hp' => $validated['hp'],
         ]);
 
-    return redirect()->route('admin.organisasi.index')->with('success', 'Data organisasi berhasil ditambahkan');
+        return redirect()->route('admin.organisasi.index')->with('success', 'Data organisasi berhasil ditambahkan');
     }
 
-     public function edit(Organisasi $organisasi)
+    public function edit(Organisasi $organisasi)
     {
         return view('admin.organisasi.edit', compact('organisasi'));
+    }
+
+    public function destroy(Organisasi $organisasi)
+    {
+        $organisasi->delete();
+        return redirect()->route('admin.organisasi.index')->with('success', 'Data berhasil dihapus');
     }
 }

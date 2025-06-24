@@ -34,8 +34,9 @@
                             @foreach ($organisasi as $os)
                                 <tr>
                                     <td>{{ $no++ }}</td>
-                                    <td>  @if($os->image)
-                                            <img src="{{ asset('storage/' . $os->image) }}" alt="{{ $os->name }}" 
+                                    <td>
+                                        @if ($os->image)
+                                            <img src="{{ asset('storage/' . $os->image) }}" alt="{{ $os->name }}"
                                                 style="max-width: 100px; max-height: 100px;" class="img-thumbnail">
                                         @else
                                             <span class="text-muted">No Image</span>
@@ -45,8 +46,6 @@
                                     <td>{{ $os->jabatan }}</td>
                                     <td>
                                         <div class="row ml-2">
-                                            <a href="{{ route('admin.organisasi.edit', $os->id) }}"
-                                                class="btn btn-primary btn-sm"><i class="fas fa-edit fa-fw"></i></a>
                                             <form method="POST" action="{{ route('admin.organisasi.destroy', $os->id) }}">
                                                 @csrf
                                                 @method('DELETE')

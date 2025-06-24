@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Agenda;
 use App\Models\Artikel;
 use App\Models\JadwalSholat;
+use App\Models\Organisasi;
 use App\Models\Pengumuman;
 use App\Models\Pesan;
 
@@ -30,7 +31,8 @@ class HomeController extends Controller
 
     public function contact()
     {
-        return view('home.contact');
+        $organisasi = Organisasi::all();
+        return view('home.contact', compact('organisasi'));
     }
 
     public function kirimPesan(Request $request)
