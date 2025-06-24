@@ -8,6 +8,7 @@ use App\Models\Agenda;
 use App\Models\Artikel;
 use App\Models\JadwalSholat;
 use App\Models\Pengumuman;
+use App\Models\Pesan;
 
 class HomeController extends Controller
 {
@@ -30,5 +31,27 @@ class HomeController extends Controller
     public function contact()
     {
         return view('home.contact');
+    }
+
+    public function kirimPesan(Request $request)
+    {
+        // Validasi input
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email',
+            'subjek' => 'required|string|max:255',
+            'pesan' => 'required|string',
+        ]);
+
+        // Simpan ke database
+        Pesan::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'subjek' => $request->subjek,
+            'pesan' => $request->pesan,
+        ]);
+
+        // Redirect dengan pesan sukses
+        return redirect()->back()->with('success', 'Pesan berhasil dikirim!');
     }
 }

@@ -50,9 +50,7 @@
                                         Dengan fasilitas yang nyaman dan lingkungan yang kondusif, kami berkomitmen untuk
                                         menciptakan atmosfer spiritual yang mendukung tumbuhnya iman dan takwa.
                                     </p>
-                                    <div class="mt-4 text-center text-md-left">
-                                        <a href="#" class="btn btn-outline-primary">Selengkapnya</a>
-                                    </div>
+                                
                                 </div>
                             </div>
                         </div>
@@ -260,28 +258,64 @@
                     </div>
                 </div>
 
-                <div class="col-lg-6">
+               <div class="col-lg-6">
                     <div class="card border-0 shadow-sm rounded-lg">
                         <div class="card-body p-4 p-md-5">
                             <h5 class="card-title text-center mb-4">Kirim Pesan</h5>
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Nama Lengkap">
+
+                            {{-- Notifikasi sukses --}}
+                            @if (session('success'))
+                                <div class="alert alert-success">
+                                    {{ session('success') }}
                                 </div>
+                            @endif
+
+                            {{-- Form --}}
+                            <form method="POST" action="{{ route('home') }}">
+                                @csrf
+
+                                {{-- Nama --}}
                                 <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Alamat Email">
+                                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                                        placeholder="Nama Lengkap" value="{{ old('name') }}">
+                                    @error('name')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
+                                {{-- Email --}}
                                 <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Subjek">
+                                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+                                        placeholder="Alamat Email" value="{{ old('email') }}">
+                                    @error('email')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
+                                {{-- Subjek --}}
                                 <div class="form-group">
-                                    <textarea class="form-control" rows="4" placeholder="Pesan Anda"></textarea>
+                                    <input type="text" name="subjek" id="subjek" class="form-control @error('subjek') is-invalid @enderror"
+                                        placeholder="Subjek" value="{{ old('subjek') }}">
+                                    @error('subjek')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
+
+                                {{-- Pesan --}}
+                                <div class="form-group">
+                                    <textarea name="pesan" id="pesan" class="form-control @error('pesan') is-invalid @enderror"
+                                        rows="4" placeholder="Pesan Anda">{{ old('pesan') }}</textarea>
+                                    @error('pesan')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
+
                                 <button type="submit" class="btn btn-primary btn-block">Kirim Pesan</button>
                             </form>
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </section>

@@ -30,6 +30,7 @@ use App\Http\Controllers\PengumumanController;
 //Home
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::post('/kirim-pesan', [HomeController::class, 'kirimPesan'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 
@@ -58,5 +59,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 		Route::resource('artikel', 'ArtikelController');
 		Route::resource('kategori-artikel', 'KategoriArtikelController');
 		Route::resource('jadwal-sholat', 'JadwalSholatController');
+		Route::resource('organisasi', 'OrganisasiController');
 	});
 });

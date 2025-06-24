@@ -35,10 +35,6 @@
                     <a class="nav-link {{ Request::segment(1) == 'pengumuman' ? 'text-primary font-weight-bold' : 'text-dark' }}"
                         href="{{ route('pengumuman') }}">Pengumuman</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('agenda') ? 'text-primary font-weight-bold' : 'text-dark' }}"
-                        href="">Agenda</a>
-                </li>
             </ul>
 
             <!-- Search Form -->

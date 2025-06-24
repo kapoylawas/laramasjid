@@ -83,6 +83,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.organisasi.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'organisasi' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Organisasi
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
