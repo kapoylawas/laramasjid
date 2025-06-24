@@ -92,6 +92,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.pesan.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'pesan' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Pesan Komentar
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">
