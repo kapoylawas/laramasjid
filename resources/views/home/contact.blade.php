@@ -10,43 +10,9 @@
                 <div class="col-12 col-lg-10">
                     <div class="contact--info mt-50">
                         <div class="text-center mb-4">
-                        <img src="/storage/organisasi/BbHKlg497WJ3vb1LQIep1CZdJeSEf5DjJ3Hha6vq.png">
+<img src="/storage/organisasi/BbHKlg497WJ3vb1LQIep1CZdJeSEf5DjJ3Hha6vq.png">
                         </div>
-                        <h4 class="text-center mb-5">Struktur Organisasi</h4>
-                        <div class="row">
-                            @foreach ($organisasi as $org)
-                                <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                                    <div class="organisasi-member text-center p-3">
-                                        @if ($org->image)
-                                            <div class="organisasi-photo-container">
-                                                <img src="{{ asset('storage/' . $org->image) }}"
-                                                    class="organisasi-photo mb-3" alt="{{ $org->name }}">
-                                            </div>
-                                        @else
-                                            <div
-                                                class="organisasi-photo-initial mb-3 d-flex align-items-center justify-content-center">
-                                                {{ substr($org->name, 0, 1) }}
-                                            </div>
-                                        @endif
-                                        <h5 class="mb-1">{{ $org->name }}</h5>
-                                        <p class="text-muted small mb-2">{{ $org->jabatan }}</p>
-                                        <a href="tel:{{ $org->hp }}" class="btn btn-sm btn-outline-primary py-0 px-2">
-                                            <i class="fa fa-phone-alt mr-1"></i> {{ $org->hp }}
-                                        </a>
-                                    </div>
-                                </div>
-                            @endforeach
-                        </div>
-                    </div>
-                </div>
-            <div class="row justify-content-center">
-                <!-- Struktur Organisasi (Top Section) -->
-                <div class="col-12 col-lg-10">
-                    <div class="contact--info mt-50">
-                        <div class="text-center mb-4">
-                        {{-- <img src="/storage/organisasi/BbHKlg497WJ3vb1LQIep1CZdJeSEf5DjJ3Hha6vq.png"> --}}
-                        </div>
-                        <h4 class="text-center mb-5">Struktur Organisasi</h4>
+                        <h4 class="text-center mb-5">Kontak Pengurus</h4>
                         <div class="row">
                             @foreach ($organisasi as $org)
                                 <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
@@ -83,8 +49,8 @@
                                 <div class="d-flex align-items-center">
                                     <i class="fa fa-clock-o fa-fw mr-3 fs-5" aria-hidden="true"></i>
                                     <div>
-                                        <h6 class="mb-0 fw-bold">Jam Masuk</h6>
-                                        <p class="mb-0">9:00 WIB - 17:00 WIB</p>
+                                        <h6 class="mb-0 fw-bold">Jam Buka</h6>
+                                        <p class="mb-0">Setiap Hari</p>
                                     </div>
                                 </div>
                             </li>
@@ -93,7 +59,7 @@
                                     <i class="fa fa-phone fa-fw mr-3 fs-5" aria-hidden="true"></i>
                                     <div>
                                         <h6 class="mb-0 fw-bold">No Telp</h6>
-                                        <p class="mb-0">+1 123 321 456 654</p>
+                                        <p class="mb-0">-</p>
                                     </div>
                                 </div>
                             </li>
@@ -102,7 +68,7 @@
                                     <i class="fa fa-envelope fa-fw mr-3 fs-5" aria-hidden="true"></i>
                                     <div>
                                         <h6 class="mb-0 fw-bold">Email</h6>
-                                        <p class="mb-0">masjid@example.com</p>
+                                        <p class="mb-0">masjidalkautsar@gmail.com</p>
                                     </div>
                                 </div>
                             </li>
@@ -111,7 +77,7 @@
                                     <i class="fa fa-map-marker fa-fw mr-3 fs-5" aria-hidden="true"></i>
                                     <div>
                                         <h6 class="mb-0 fw-bold">Alamat</h6>
-                                        <p class="mb-0">Berlin, Germany</p>
+                                        <p class="mb-0">Sambungrejo Kecamatan Sukodono</p>
                                     </div>
                                 </div>
                             </li>
