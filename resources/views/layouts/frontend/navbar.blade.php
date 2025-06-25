@@ -29,7 +29,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::segment(1) == 'artikel' ? 'text-primary font-weight-bold' : 'text-dark' }}"
-                        href="{{ route('artikel') }}">Artikel</a>
+                        href="{{ route('artikel') }}">Keuangan</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::segment(1) == 'pengumuman' ? 'text-primary font-weight-bold' : 'text-dark' }}"
@@ -38,7 +38,7 @@
             </ul>
 
             <!-- Search Form -->
-            <form class="form-inline my-2 my-lg-0 mr-3" action="{{ route('artikel.search') }}" method="GET">
+            {{-- <form class="form-inline my-2 my-lg-0 mr-3" action="{{ route('artikel.search') }}" method="GET">
                 <div class="input-group">
                     <input name="keyword" id="search" class="form-control form-control-sm" placeholder="Search..."
                         aria-label="Search">
@@ -48,7 +48,7 @@
                         </button>
                     </div>
                 </div>
-            </form>
+            </form> --}}
 
             @auth
                 <div class="dropdown">

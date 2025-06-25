@@ -7,7 +7,7 @@
                     <!-- Footer Logo -->
                     <div class="footer-logo">
                         <a href="/">
-                            <h3 class="text-light">Masjid</h3>
+                            <h3 class="text-light">Masjid Al-Kausar</h3>
                         </a>
                     </div>
                     <!-- Copywrite -->
@@ -27,14 +27,14 @@
     <!-- Bottom Footer Area -->
     <div class="bottom-footer-area d-flex justify-content-between align-items-center">
         <!-- Contact Info -->
-        <div class="contact-info">
+        {{-- <div class="contact-info">
             <a href="#"><span>Phone:</span> +1 123 321 456 654</a>
             <a href="#"><span>Email:</span> masjid@example.com</a>
-        </div>
+        </div> --}}
         <!-- Follow Us -->
         <div class="follow-us">
             <a href="{{ route('login') }}"><i class="fa fa-sign-in" aria-hidden="true"></i></a>
-            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+            {{-- <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a> --}}
         </div>
     </div>
 </footer>

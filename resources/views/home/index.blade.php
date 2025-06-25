@@ -10,8 +10,8 @@
                 <div class="col-12 text-center">
                     <!-- Hero Content -->
                     <div class="hero-content animated fadeIn">
-                        <h1 class="display-4 text-white font-weight-bold mb-4">Selamat Datang di Masjid</h1>
-                        <a href="#" class="btn btn-primary btn-lg px-4 py-3 rounded-pill shadow">Jelajahi Sekarang</a>
+                        <h1 class="display-4 text-white font-weight-bold mb-4">Selamat Datang di Masjid Al-Kausar</h1>
+                        {{-- <a href="#" class="btn btn-primary btn-lg px-4 py-3 rounded-pill shadow">Jelajahi Sekarang</a> --}}
                     </div>
                 </div>
             </div>
@@ -232,7 +232,7 @@
                             </div>
                             <div>
                                 <h6 class="mb-0">Alamat</h6>
-                                <p class="mb-0 text-muted">Jl. Pendidikan No. 123, Kota Bandung</p>
+                                <p class="mb-0 text-muted">Sambungrejo RT 8 RW 3 SUkodono Sidoarjo</p>
                             </div>
                         </div>
 
@@ -242,7 +242,7 @@
                             </div>
                             <div>
                                 <h6 class="mb-0">Telepon</h6>
-                                <p class="mb-0 text-muted">(022) 1234567</p>
+                                <p class="mb-0 text-muted">(0822) 41327898</p>
                             </div>
                         </div>
 
@@ -252,7 +252,7 @@
                             </div>
                             <div>
                                 <h6 class="mb-0">Email</h6>
-                                <p class="mb-0 text-muted">info@masjidsekolah.elit</p>
+                                <p class="mb-0 text-muted">alkausar@gmail.com</p>
                             </div>
                         </div>
                     </div>

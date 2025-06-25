@@ -28,7 +28,7 @@
     <!-- ##### Header Area Start ##### -->
     <header class="header-area">
 
-        <!-- Top Header Area -->
+        {{-- <!-- Top Header Area -->
         <div class="top-header-area d-flex justify-content-between align-items-center">
             <!-- Contact Info -->
             <div class="contact-info">
@@ -40,7 +40,7 @@
                 <span>Follow us</span>
                 <a href=""><i class="fa fa-facebook" aria-hidden="true"></i></a>
             </div>
-        </div>
+        </div> --}}
 
         <!-- Navbar Area -->
         @include('layouts.frontend.navbar')
