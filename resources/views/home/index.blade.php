@@ -50,7 +50,7 @@
                                         Dengan fasilitas yang nyaman dan lingkungan yang kondusif, kami berkomitmen untuk
                                         menciptakan atmosfer spiritual yang mendukung tumbuhnya iman dan takwa.
                                     </p>
-                                
+
                                 </div>
                             </div>
                         </div>
@@ -179,6 +179,11 @@
                     <h2 class="section-title mb-3">Jadwal Sholat</h2>
                     <p class="lead text-muted">Waktu-waktu sholat hari ini</p>
                     <div class="divider mx-auto bg-primary"></div>
+                    <!-- Tambahkan counter waktu adzan di sini -->
+                    <div id="adzan-counter" class="mt-3">
+                        <h4 class="text-primary">Menuju Adzan <span id="next-prayer-name"></span></h4>
+                        <div class="display-4 font-weight-bold" id="countdown"></div>
+                    </div>
                 </div>
             </div>
 
@@ -200,10 +205,57 @@
                                             $no = 1;
                                         @endphp
                                         @foreach ($jadwalSholats as $js)
-                                            <tr>
+                                            <tr class="prayer-time" data-name="{{ $js->name }}"
+                                                data-time="{{ $js->waktu }}">
                                                 <td>{{ $no++ }}</td>
                                                 <td>{{ $js->name }}</td>
                                                 <td>{{ $js->waktu }}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5 bg-white">
+        <div class="container">
+            <div class="row justify-content-center mb-5">
+                <div class="col-lg-8 text-center">
+                    <h2 class="section-title mb-3">laporan Keuangan</h2>
+                </div>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <div class="card border-0 shadow-sm rounded-lg overflow-hidden">
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead class="bg-primary text-white">
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Tanggal</th>
+                                            <th>Uang Keluar</th>
+                                            <th>Saldo Akhir</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @php
+                                            $no = 1;
+                                        @endphp
+                                        @foreach ($keuangan as $ku)
+                                            <tr>
+                                                <td>{{ $no++ }}</td>
+                                                <td>{{ $ku->tanggal }}</td>
+                                                <td>{{ formatRupiah($ku->uang_keluar) }}</td>
+                                                <td>{{ formatRupiah($ku->saldo_akhir) }}</td>
+                                                <td>{{ $ku->keterangan }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>
@@ -258,7 +310,7 @@
                     </div>
                 </div>
 
-               <div class="col-lg-6">
+                <div class="col-lg-6">
                     <div class="card border-0 shadow-sm rounded-lg">
                         <div class="card-body p-4 p-md-5">
                             <h5 class="card-title text-center mb-4">Kirim Pesan</h5>
@@ -276,7 +328,8 @@
 
                                 {{-- Nama --}}
                                 <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control @error('name') is-invalid @enderror"
+                                    <input type="text" name="name" id="name"
+                                        class="form-control @error('name') is-invalid @enderror"
                                         placeholder="Nama Lengkap" value="{{ old('name') }}">
                                     @error('name')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -285,7 +338,8 @@
 
                                 {{-- Email --}}
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror"
+                                    <input type="email" name="email" id="email"
+                                        class="form-control @error('email') is-invalid @enderror"
                                         placeholder="Alamat Email" value="{{ old('email') }}">
                                     @error('email')
                                         <div class="invalid-feedback">{{ $message }}</div>
@@ -294,8 +348,9 @@
 
                                 {{-- Subjek --}}
                                 <div class="form-group">
-                                    <input type="text" name="subjek" id="subjek" class="form-control @error('subjek') is-invalid @enderror"
-                                        placeholder="Subjek" value="{{ old('subjek') }}">
+                                    <input type="text" name="subjek" id="subjek"
+                                        class="form-control @error('subjek') is-invalid @enderror" placeholder="Subjek"
+                                        value="{{ old('subjek') }}">
                                     @error('subjek')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -303,8 +358,8 @@
 
                                 {{-- Pesan --}}
                                 <div class="form-group">
-                                    <textarea name="pesan" id="pesan" class="form-control @error('pesan') is-invalid @enderror"
-                                        rows="4" placeholder="Pesan Anda">{{ old('pesan') }}</textarea>
+                                    <textarea name="pesan" id="pesan" class="form-control @error('pesan') is-invalid @enderror" rows="4"
+                                        placeholder="Pesan Anda">{{ old('pesan') }}</textarea>
                                     @error('pesan')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -417,6 +472,62 @@
                     }
                 });
             });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Ambil semua waktu sholat dari tabel
+            const prayerTimes = [];
+            document.querySelectorAll('.prayer-time').forEach(row => {
+                prayerTimes.push({
+                    name: row.getAttribute('data-name'),
+                    time: row.getAttribute('data-time')
+                });
+            });
+
+            function updateCountdown() {
+                const now = new Date();
+                let nextPrayer = null;
+                let nextPrayerTime = null;
+
+                // Cari waktu sholat berikutnya
+                for (const prayer of prayerTimes) {
+                    const [hours, minutes] = prayer.time.split(':').map(Number);
+                    const prayerTime = new Date();
+                    prayerTime.setHours(hours, minutes, 0, 0);
+
+                    if (prayerTime > now) {
+                        nextPrayer = prayer;
+                        nextPrayerTime = prayerTime;
+                        break;
+                    }
+                }
+
+                // Jika tidak ada sholat lagi hari ini, ambil sholat pertama besok
+                if (!nextPrayer) {
+                    nextPrayer = prayerTimes[0];
+                    const [hours, minutes] = nextPrayer.time.split(':').map(Number);
+                    nextPrayerTime = new Date();
+                    nextPrayerTime.setDate(nextPrayerTime.getDate() + 1);
+                    nextPrayerTime.setHours(hours, minutes, 0, 0);
+                }
+
+                // Hitung selisih waktu
+                const diff = nextPrayerTime - now;
+
+                // Konversi ke jam, menit, detik
+                const hours = Math.floor(diff / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+                // Tampilkan di halaman
+                document.getElementById('next-prayer-name').textContent = nextPrayer.name;
+                document.getElementById('countdown').textContent =
+                    `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }
+
+            // Update setiap detik
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
         });
     </script>
 @endpush

@@ -101,6 +101,15 @@
                         </p>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('admin.keuangan.index') }}"
+                        class="nav-link {{ Request::segment(2) == 'keuangan' ? 'active' : '' }}">
+                        <i class="nav-icon fas fa-list"></i>
+                        <p>
+                            Keuangan
+                        </p>
+                    </a>
+                </li>
 
                 <li class="nav-header">PENGATURAN</li>
                 <li class="nav-item">

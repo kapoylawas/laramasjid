@@ -61,5 +61,6 @@ Route::group(['namespace' => 'Admin', 'prefix' => 'admin', 'middleware' => ['aut
 		Route::resource('jadwal-sholat', 'JadwalSholatController');
 		Route::resource('organisasi', 'OrganisasiController');
 		Route::resource('pesan', 'KomentarController');
+		Route::resource('keuangan', 'KeuanganController');
 	});
 });

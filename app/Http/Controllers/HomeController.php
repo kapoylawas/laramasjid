@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Agenda;
 use App\Models\Artikel;
 use App\Models\JadwalSholat;
+use App\Models\Keuangan;
 use App\Models\Organisasi;
 use App\Models\Pengumuman;
 use App\Models\Pesan;
@@ -16,11 +17,13 @@ class HomeController extends Controller
     public function index()
     {
         $jadwalSholats = JadwalSholat::all();
+        $keuangan = Keuangan::all();
         return view('home.index', [
             'agenda' => Agenda::latest()->take(2)->get(),
             'artikel' => Artikel::with(['user', 'kategoriArtikel'])->latest()->take(2)->get(),
             'pengumuman' => Pengumuman::with(['user'])->latest()->take(2)->get(),
-            'jadwalSholats' => $jadwalSholats
+            'jadwalSholats' => $jadwalSholats,
+            'keuangan' => $keuangan,
         ]);
     }
 
